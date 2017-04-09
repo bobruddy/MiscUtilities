@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PRJDIR="$(dirname $(realpath $0))/.."
+
+[ -f ~/.tmux.conf ] && rm ~/.tmux.conf
+[ -f ~/.tmux ] && rm ~/.tmux
+[ -d ~/.tmux ] && rm -rf  ~/.tmux
+ln -s ${PRJDIR}/etc/tmux.conf ~/.tmux.conf
+ln -s ${PRJDIR}/etc/tmux ~/.tmux
+
+[ -f ~/.profile ] && rm ~/.profile
+ln -s ${PRJDIR}/etc/profile ~/.profile
+
+[ -d ~/scripts ] && echo "You need to deal with ~/scripts"
+[ -f ~/scripts ] && rm ~/scripts
+ln -s ${PRJDIR}/scripts ~/scripts
+
+[ -d ~/etc ] && echo "You need to deal with ~/etc"
+[ -f ~/etc ] && rm ~/etc
+ln -s ${PRJDIR}/etc ~/etc
+
