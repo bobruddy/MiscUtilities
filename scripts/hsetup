@@ -8,6 +8,9 @@ PRJDIR="$(dirname $(realpath $0))/.."
 ln -s ${PRJDIR}/etc/tmux.conf ~/.tmux.conf
 ln -s ${PRJDIR}/etc/tmux ~/.tmux
 
+[ -f ~/.bashrc ] && rm ~/.bashrc
+ln -s ${PRJDIR}/etc/bashrc ~/.bashrc
+
 [ -f ~/.profile ] && rm ~/.profile
 ln -s ${PRJDIR}/etc/profile ~/.profile
 
