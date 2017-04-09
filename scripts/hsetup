@@ -4,21 +4,22 @@ PRJDIR="$(dirname $(realpath $0))/.."
 
 [ -f ~/.tmux.conf ] && rm ~/.tmux.conf
 [ -f ~/.tmux ] && rm ~/.tmux
-[ -d ~/.tmux ] && rm -rf  ~/.tmux
-ln -s ${PRJDIR}/etc/tmux.conf ~/.tmux.conf
-ln -s ${PRJDIR}/etc/tmux ~/.tmux
+[ ! -h ~/.tmux ] && [ -d ~/.tmux ] && mv ~/.tmux ~/tmux.old
+[ -h ~/.tmux ] && rm ~/.tmux
+ln -fs ${PRJDIR}/etc/tmux.conf ~/.tmux.conf
+ln -fs ${PRJDIR}/etc/tmux ~/.tmux
 
 [ -f ~/.bashrc ] && rm ~/.bashrc
-ln -s ${PRJDIR}/etc/bashrc ~/.bashrc
+ln -fs ${PRJDIR}/etc/bashrc ~/.bashrc
 
 [ -f ~/.profile ] && rm ~/.profile
-ln -s ${PRJDIR}/etc/profile ~/.profile
+ln -fs ${PRJDIR}/etc/profile ~/.profile
 
-[ -d ~/scripts ] && echo "You need to deal with ~/scripts"
-[ -f ~/scripts ] && rm ~/scripts
-ln -s ${PRJDIR}/scripts ~/scripts
+[ ! -h ~/scripts ] && [ -d ~/scripts ] && mv ~/scripts ~/scripts.old
+[ -h ~/scripts ] && rm ~/scripts
+ln -fs ${PRJDIR}/scripts ~/scripts
 
-[ -d ~/etc ] && echo "You need to deal with ~/etc"
-[ -f ~/etc ] && rm ~/etc
-ln -s ${PRJDIR}/etc ~/etc
+[ ! -h ~/etc ] && [ -d ~/etc ] && mv ~/etc ~/etc.old
+[ -h ~/etc ] && rm ~/etc
+ln -fs ${PRJDIR}/etc ~/etc
 
