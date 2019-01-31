@@ -119,3 +119,5 @@ fi
 set -o vi
 [ -f /usr/bin/setxkbmap ] && setxkbmap -option caps:ctrl_modifier
 
+
+
