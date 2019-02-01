@@ -1,0 +1,63 @@
+##########################
+# setup
+git config --global user.name 'Robert Ruddy'
+git config --global user.email 'bob@ruddy.net'
+git config --system core.editor vim
+git config --global alias.<short alias> <command such as commit>
+
+##########################
+# basic commands
+git init 		## start a local repo
+git clone <url> 	## pull down a remote repo
+git checkout <branch>	## switch to a branch
+
+git add file.txt	## mark a file to be added
+git commit -m'comment'	## commit all files marked to be added/changed
+
+##########################
+# remote commands
+git remote add <remote name (origin)> <url>	# creates remote target
+git push <remote name> <branch>	# pushes local branch to remote repo
+
+git remote -v			## list remote defined dirs
+git remove <remote name>	## remove remote origin
+git rename <old name> <new name>	## rename origin
+git prune <remote name>		## get rid of local branches not in remote
+
+git branch --set-upstream-to=origin/master master # set remote tracking
+
+##########################
+# pulling changes
+git branch -r			## shows you all remote branch info
+git branch			## shows you all branch info
+git fetch 			## will pull fetch remote tracking branch
+git log --oneline master..origin/master ## see what new commits in upstream
+
+git merge origin/master		## merge origin/master to current branch
+				## non-destructive. creates extra commits in log
+
+git rebase master		## incorporates master into current branch and
+				## creates a cleaner history. need to test more
+				## this rewrites history. don't use on public
+				## branches
+
+				## rebase is good for a local branch to say revert
+				## back to the beginning of your feature branch
+
+				## need to look at interactive rebase to clean up
+				## commits before pull request
+
+git pull			## will fetch remote branch and then merge
+
+#######################
+## undo
+git reset			## discard commits in private branch or throw away
+				## uncommitted changes. can be used for branch or file
+
+#######################
+## submodules
+git clone --recursive <url>	## will grab repo and all submodules
+git submodule update --init --recursive ## pull down submodules that aren't pulled down
+
+git submodule update --remote	## pull down any remote changes for submodules
+git pull --recurse-submodules	## pulls down modules that aren't pulled down
